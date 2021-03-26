@@ -1,0 +1,10 @@
+README.md
+setup.py
+pytyping/__init__.py
+pytyping/pytype.py
+pytyping/quotes.py
+pytyping.egg-info/PKG-INFO
+pytyping.egg-info/SOURCES.txt
+pytyping.egg-info/dependency_links.txt
+pytyping.egg-info/requires.txt
+pytyping.egg-info/top_level.txt

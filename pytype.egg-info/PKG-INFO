@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: pytype
+Version: 0.1
+Summary: A simple Typing Speed Test right in your terminal made with Python and the curses module.
+Home-page: https://github.com/FraKappa/pytype
+Author: Kappa
+Author-email: f.cappetti.05@gmail.com
+License: MIT
+Download-URL: https://github.com/FraKappa/pytype/archive/refs/tags/v_01.tar.gz
+Description: # pytype
+        A simple Typing Speed Test right in your terminal made with Python and the curses module.
+        
+        ![pytype](https://user-images.githubusercontent.com/72104527/112655651-e7a7e500-8e50-11eb-9b46-ecb8df2e10e4.gif)
+        
+        ## Installation
+        You can install pytype by simply typing in your terminal:
+        ```
+        pip install pytype
+        ```
+        
+        To run the program:
+        ```
+        pytype
+        ```
+        
+Keywords: typing
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown

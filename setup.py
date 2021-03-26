@@ -1,11 +1,11 @@
 from setuptools import setup
 
-with open("README.md", "r", encoding="utf-8") as readme:
+with open('README.md', 'r', encoding='utf-8') as readme:
     long_description = readme.read()
 
 setup(
-    name='pytype',
-    packages=['pytype'],
+    name='pytyping',
+    packages=['pytyping'],
     version='0.1',
     license='MIT',
     description='A simple Typing Speed Test right in your terminal made with Python and the curses module.',
@@ -13,8 +13,8 @@ setup(
     long_description_content_type='text/markdown',
     author='Kappa',
     author_email='f.cappetti.05@gmail.com',
-    url='https://github.com/FraKappa/pychordpro',
-    download_url='https://github.com/FraKappa/pychordpro/archive/v_01.tar.gz',
+    url='https://github.com/FraKappa/pytype',
+    download_url='https://github.com/FraKappa/pytyping/archive/refs/tags/v_01.tar.gz',
     keywords=['typing'],
     install_requires=[
         'requests'
