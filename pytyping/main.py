@@ -1,14 +1,13 @@
-# !/usr/bin/env python
-
 import curses
 import time
-from pytyping.quotes import get_quote
+from quotes import get_quote
 
 
 VALIDS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
 
 minutes = None
 wpm = None
+accuracy = None
 
 
 def menu(stdsrc):
@@ -63,10 +62,14 @@ def game(stdsrc):
     Let's you play the game
     '''
 
-    global minutes, wpm
+    global minutes, wpm, accuracy
 
     sentence = get_quote()
     user_input = ''
+    
+    # Variables to calculate the accuracy
+    corrects = 0
+    total = 0
 
     # Get the time when the game starts
     start = time.time()
@@ -76,7 +79,7 @@ def game(stdsrc):
         stdsrc.clear()
         
         # Check if the user has typed all the sentence
-        if user_input == sentence:
+        if len(user_input) == len(sentence):
             break
 
         # Gets the width and height of the screen
@@ -143,17 +146,27 @@ def game(stdsrc):
         elif key in VALIDS and len(user_input) < len(sentence):
             user_input += key
 
+            # Increase the number of correct entries if the character is correct
+            if user_input[-1] == sentence[len(user_input) - 1]:
+                corrects += 1
+
+            # Increase the number of total entries
+            total += 1
+
         # Refresh the screen to see the changes
         stdsrc.refresh()
 
     # Get the time when the game ends
     stop = time.time()
 
-    # Calculate the minutes by subtracting the final and the initial time, dividing by 60 and rounding to the seconds
+    # Calculates the minutes by subtracting the final and the initial time, dividing by 60 and rounding to the seconds
     minutes = round((stop - start) / 60, 2)
 
-    # Calculate the WPM, see: https://www.speedtypingonline.com/typing-equations
+    # Calculates the WPM, see: https://www.speedtypingonline.com/typing-equations
     wpm = round((len(sentence) / 5) / minutes)
+
+    # Calculates the accuracy
+    accuracy = round(corrects / total * 100)
 
 
 def score(stdsrc):
@@ -176,11 +189,15 @@ def score(stdsrc):
 
     minutes_string = 'Time (minutes): ' + str(minutes)
     x = width // 2 - len(minutes_string) // 2
-    stdsrc.addstr(y - 3, x, minutes_string)
+    stdsrc.addstr(y - 4, x, minutes_string)
 
     wpm_string = 'WPM: ' + str(wpm)
     x = width // 2 - len(wpm_string) // 2
-    stdsrc.addstr(y - 2, x, wpm_string)
+    stdsrc.addstr(y - 3, x, wpm_string)
+
+    accuracy_string = 'Accuracy: ' + str(accuracy) + '%'
+    x = width // 2 - len(accuracy_string) // 2
+    stdsrc.addstr(y - 2, x, accuracy_string)
 
     message = 'Press any key to continue'
 
@@ -212,4 +229,3 @@ def main(stdsrc):
 
 
 curses.wrapper(main)
-
