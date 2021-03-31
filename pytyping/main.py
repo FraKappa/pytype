@@ -1,6 +1,6 @@
 import curses
 import time
-from quotes import get_quote
+from pytyping.quotes import get_quote
 
 
 VALIDS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
