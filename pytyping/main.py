@@ -208,7 +208,7 @@ def score(stdsrc):
     stdsrc.getch()
 
 
-def main(stdsrc):
+def main_loop(stdsrc):
     '''
     Define the main loop of the application
     '''
@@ -228,4 +228,6 @@ def main(stdsrc):
         score(stdsrc)
 
 
-curses.wrapper(main)
+def main():
+    curses.wrapper(main_loop)
+
